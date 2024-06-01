@@ -1,0 +1,47 @@
+﻿<Window x:Class="DotaReminder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotaReminder"
+        mc:Ignorable="d"
+        Title="Dota Reminder" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu DockPanel.Dock="Top" VerticalAlignment="Center">
+            <MenuItem Header="GSI Listener">
+                <MenuItem Header="Start" Click="GSIListenerStart_Click"/>
+                <MenuItem Header="Stop" Click="GSIListenerStop_Click"/>
+            </MenuItem>
+            <MenuItem Header="Events" Click="EventsView_Click" />
+            <MenuItem Header="Reminders" Click="Reminders_Click" />
+
+        </Menu>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Margin" Value="10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock x:Name="stateLabel" Text="" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="statusLabel" Text="GSI Status: Disconnected" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1" x:Name="pageContent" NavigationUIVisibility="Hidden"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,0" Grid.Row="2">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Margin" Value="10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock x:Name="pageLabel" Text="Test124" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Window>
