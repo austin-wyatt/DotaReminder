@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotaReminder"
         mc:Ignorable="d"
-        Opacity="0.65"
+        Opacity="0.8"
         AllowsTransparency="True"
         WindowStartupLocation="Manual"
         WindowStyle="None"
@@ -13,8 +13,9 @@
         Height="50" 
         Width="50"
         SizeToContent="WidthAndHeight"
+        Topmost="True"
         >
     <Grid x:Name="contentGrid">
-        <TextBlock x:Name="reminderLabel" Text="Test123" Margin="5" FontSize="38px" TextWrapping="Wrap" MaxWidth="600"/>
+        <TextBlock x:Name="reminderLabel" Text="Test123" Margin="5" FontSize="38px" TextWrapping="Wrap" MaxWidth="1000"/>
     </Grid>
 </Window>

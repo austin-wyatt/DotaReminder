@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,22 @@ namespace DotaReminder
 		public ReminderWindow(Reminder reminder)
 		{
 			InitializeComponent();
+
+			switch (reminder.Severity)
+			{
+				case ReminderSeverity.Minor:
+					contentGrid.Background = new SolidColorBrush(Colors.Green);
+					reminderLabel.FontSize = 48;
+					break;
+				case ReminderSeverity.Major:
+					contentGrid.Background = new SolidColorBrush(Colors.Yellow);
+					reminderLabel.FontSize = 58;
+					break;
+				case ReminderSeverity.Critical:
+					contentGrid.Background = new SolidColorBrush(Colors.Red);
+					reminderLabel.FontSize = 68;
+					break;
+			}
 
 			reminderLabel.Text = reminder.Message;
 
@@ -49,8 +66,6 @@ namespace DotaReminder
 
 			//Top = screen.TopY + screen.Height * 0.25;
 			//Left = screen.TopX + screen.Width / 2;
-
-			Topmost = true;
 			Show();
 		}
 

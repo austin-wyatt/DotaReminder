@@ -30,6 +30,8 @@ namespace DotaReminder
 
 		private MainWindow _window;
 
+		public float SoundVolume = 0.4f;
+
 		public ReminderManager(MainWindow mainWindow)
 		{
 			_window = mainWindow;
@@ -41,7 +43,7 @@ namespace DotaReminder
 				_criticalNotificationStream.Position = 0;
 			};
 
-			_soundPlayer.Volume = 0.4f;
+			_soundPlayer.Volume = SoundVolume;
 			
 			try
 			{
@@ -82,13 +84,16 @@ namespace DotaReminder
 			switch(reminder.Severity)
 			{
 				case ReminderSeverity.Minor:
+					_soundPlayer.Volume = SoundVolume;
 					_soundPlayer.Init(_minorNotificationStream);
 					break;
 				case ReminderSeverity.Major:
 					_soundPlayer.Init(_majorNotificationStream);
+					_soundPlayer.Volume = SoundVolume * 1.25f;
 					break;
 				case ReminderSeverity.Critical:
 					_soundPlayer.Init(_criticalNotificationStream);
+					_soundPlayer.Volume = SoundVolume * 1.5f;
 					break;
 			}
 
